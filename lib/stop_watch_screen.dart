@@ -15,7 +15,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
   int _time = 0;
   bool _isRunning = false;
 
-  List<String> _lapTimes = [];
+  final List<String> _lapTimes = [];
 
   void _clickButton() {
     _isRunning = !_isRunning;
@@ -47,7 +47,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
   }
 
   void _recordLapTime(String time) {
-    _lapTimes.insert(0, '${_lapTimes.length + 1}등 $_time');
+    _lapTimes.insert(0, '${_lapTimes.length + 1}등 $time');
   }
 
   @override
@@ -58,41 +58,32 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    int sec = _time ~/ 100;
+    // int sec = _time ~/ 100;
+    String sec = '${_time ~/ 100}'.padLeft(2, '0');
     String hundredth = '${_time % 100}'.padLeft(2, '0');
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('스톱워치'),
+        title: const Text('STOP WATCH'),
       ),
       body: Column(
         children: [
           const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                '$sec',
+                '$sec.',
                 style: const TextStyle(fontSize: 50),
               ),
               Text(
-                '$hundredth',
+                hundredth,
+                style: const TextStyle(fontSize: 50),
               ),
             ],
           ),
-          SizedBox(
-            width: 100,
-            height: 200,
-            child: ListView(
-              children: [
-                const Center(child: Text('222')),
-                const Center(child: Text('222')),
-                const Center(child: Text('222')),
-              ],
-            ),
-          ),
-          const Spacer(),
+          const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -125,6 +116,18 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
             ],
           ),
           const SizedBox(height: 50),
+          SizedBox(
+            width: 100,
+            height: 500,
+            child: ListView(
+              children: _lapTimes
+                  .map((e) => Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: Center(child: Text(e)),
+                      ))
+                  .toList(),
+            ),
+          ),
         ],
       ),
     );
