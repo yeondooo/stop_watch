@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class StopWatchScreen extends StatefulWidget {
   const StopWatchScreen({Key? key}) : super(key: key);
@@ -10,6 +10,31 @@ class StopWatchScreen extends StatefulWidget {
 class _StopWatchScreenState extends State<StopWatchScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('스톱워치'),
+      ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              FloatingActionButton(
+                onPressed: () {},
+                child: const Icon(Icons.refresh),
+              ),
+              FloatingActionButton(
+                onPressed: () {},
+                child: const Icon(Icons.play_arrow),
+              ),
+              FloatingActionButton(
+                onPressed: () {},
+                child: const Icon(Icons.add),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
