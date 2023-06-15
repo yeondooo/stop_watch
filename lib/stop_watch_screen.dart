@@ -73,13 +73,21 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                '$sec.',
-                style: const TextStyle(fontSize: 50),
+              Container(
+                width: 80,
+                height: 100,
+                child: Text(
+                  '$sec.',
+                  style: const TextStyle(fontSize: 50),
+                ),
               ),
-              Text(
-                hundredth,
-                style: const TextStyle(fontSize: 50),
+              Container(
+                width: 80,
+                height: 100,
+                child: Text(
+                  hundredth,
+                  style: const TextStyle(fontSize: 50),
+                ),
               ),
             ],
           ),
